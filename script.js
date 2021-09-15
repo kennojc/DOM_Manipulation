@@ -155,6 +155,117 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return div;
     }
 
+    function formData(){
+      let form = document.createElement("form");
+      form.setAttribute("class", "needs-validation");
+      form.noValidate = true;
+      
+      let row = document.createElement("div");
+          row.setAttribute("class", "row");
+      
+      let colboot = document.createElement("div");
+          colboot.setAttribute("class", "col-md-6 mb-3");
+
+      let label = document.createElement("label");
+          label.htmlFor = "firstName";
+          label.innerText = "First name";
+      
+      let inputName = document.createElement("input");
+          inputName.setAttribute("class", "form-control");
+          inputName.setAttribute("type", "text");
+          inputName.setAttribute("id","firstName");
+          inputName.setAttribute("placeholder","");
+          inputName.setAttribute("value","");
+          inputName.required = true;
+
+      let validated = document.createElement("div");
+          validated.setAttribute("class", "invalid-feedback");
+          validated.textContent = "Valid first name is required."
+
+      let col6b = document.createElement("div");
+          col6b.setAttribute("class", "col-md-6 mb-3");
+
+      let labelLastname = document.createElement("label");
+          labelLastname.htmlFor = "lastName";
+          labelLastname.innerText = "Last name";
+
+      let inputLastname = document.createElement("input");
+          inputLastname.setAttribute("class", "form-control");
+          inputLastname.setAttribute("type", "text");
+          inputLastname.setAttribute("id","lastName");
+          inputLastname.setAttribute("placeholder","");
+          inputLastname.setAttribute("value","");
+          inputLastname.required = true;
+
+      let validLastname = document.createElement("div");
+          validLastname.setAttribute("class", "invalid-feedback");
+          validLastname.textContent = "Valid last name is required.";
+          
+          colboot.appendChild(label);
+          colboot.appendChild(inputName);
+          colboot.appendChild(validated);
+          
+          col6b.appendChild(labelLastname);
+          col6b.appendChild(inputLastname);
+          col6b.appendChild(validLastname);
+          row.appendChild(colboot);
+          row.appendChild(col6b);
+          
+          form.appendChild(row);
+
+          let hr3 = document.createElement("hr");
+              hr3.setAttribute("class", "mb-4");
+
+          form.appendChild(hr3);
+
+          let btn = document.createElement("button");
+              btn.setAttribute("class", "btn btn-primary btn-lg btn-block");
+              btn.setAttribute("type", "submit");
+              btn.innerText = "Continue to checkout";
+
+          form.appendChild(btn);
+      return form;
+  }
+
+  function userName(){
+    let div = document.createElement("div");
+        div.setAttribute("class", "mb-3");
+    
+    let label = document.createElement("label");
+        label.htmlFor = "username";
+        label.innerText = "Username";
+    
+    let divInp = document.createElement("div");
+        divInp.setAttribute("class", "input-group");
+
+    let divInpPre = document.createElement("div");
+        divInpPre.setAttribute("class", "input-group-prepend");
+    
+    let span= document.createElement("span");
+        span.setAttribute("class", "input-group-text");
+        span.innerText = "@";
+
+    let inputUserName = document.createElement("input");
+        inputUserName.setAttribute("class", "form-control");
+        inputUserName.setAttribute("type", "text");
+        inputUserName.setAttribute("id","username");
+        inputUserName.setAttribute("placeholder","Username");
+        inputUserName.required = true;
+
+    let validUsername = document.createElement("div");
+        validUsername.setAttribute("class", "invalid-feedback");
+        validUsername.style.width = "100%";
+        validUsername.textContent = "Your username is required.";
+
+    divInpPre.appendChild(span);
+    divInp.appendChild(divInpPre);
+    divInp.appendChild(inputUserName);
+    divInp.appendChild(validUsername);
+    div.appendChild(label);
+    div.appendChild(divInp);
+    return div;
+}
+
       var body = document.getElementsByTagName('body')[0];
       body.className = 'bg-light';
       var container = document.createElement('div');
@@ -163,8 +274,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
       container.appendChild(header());
       var row = document.createElement('div');
       row.className = 'row';
+      container.appendChild(formValidation())
       container.appendChild(row);
       row.appendChild(shoppingCart());
-      row.appendChild(formValidation())
+      row.appendChild(formData());
+      row.appendChild(userName());
       container.appendChild(foot());
 });
